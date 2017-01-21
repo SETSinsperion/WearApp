@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WearApp</string>
+    <string name="folder_not_created">The directory WearApp wasn\'t created</string>
+    <string name="camera_not_permitted">The camera permission wasn\'t granted</string>
 </resources>

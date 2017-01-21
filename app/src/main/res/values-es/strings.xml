@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WearApp</string>
+    <string name="folder_not_created">El directorio WearApp no fue creado</string>
+    <string name="camera_not_permitted">El permiso de la camera no fue autorizado</string>
+</resources>
