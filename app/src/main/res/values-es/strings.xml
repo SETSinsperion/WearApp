@@ -3,4 +3,13 @@
     <string name="app_name">WearApp</string>
     <string name="folder_not_created">El directorio WearApp no fue creado</string>
     <string name="camera_not_permitted">El permiso de la camera no fue autorizado</string>
+    <string name="tv_color">El color</string>
+    <string name="tv_contrast_high">Contraste alto</string>
+    <string name="tv_contrast_low">Contraste bajo</string>
+    <string name="tv_contrast_perfect">Contraste perfecto</string>
+    <string name="tv_joker_colors">Colores comodines</string>
+    <string name="tv_mixes">Combina con</string>
+    <string name="tv_icon_camera">Da clic al icono de la cámara</string>
+    <string name="tv_detected_color">Color detectado</string>
+    <string name="pd_waiting_getting_color">Obteniendo color ...</string>
 </resources>
