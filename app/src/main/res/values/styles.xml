@@ -8,4 +8,54 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="textview_primary_style">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="textview_secondary_style">
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="textview_colors_style">
+        <item name="android:textColor">@color/icons</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="textview_blackcolor_style">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/black</item>
+    </style>
+
+    <style name="textview_whitekcolor_style">
+        <item name="android:textColor">@color/icons</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/icons</item>
+    </style>
+
+    <style name="textview_graycolor_style">
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/secondary_text</item>
+    </style>
+
 </resources>

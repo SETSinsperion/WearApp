@@ -1,10 +1,16 @@
 package com.insperion.sets.wearapp2;
 
 import android.Manifest;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
@@ -12,18 +18,21 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private TextView mycolor, high_contrast, perfect_contrast, low_contrast;
+    private FloatingActionButton fab_camera;
+
     private File d_WearApp;
     private Intent camera;
     private Resources resources;
-
-    private FloatingActionButton fab_camera;
 
     private final int m_CAMERA = 0, m_WRITEEXTERNALSTORAGE = 1, TAKE_PHOTO = 10;
 
@@ -79,6 +88,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // GUI relationship
         fab_camera = (FloatingActionButton)findViewById(R.id.fab_camera);
+        mycolor = (TextView)findViewById(R.id.tv_yourcolor);
+        high_contrast = (TextView)findViewById(R.id.tv_high_c);
+        perfect_contrast = (TextView)findViewById(R.id.tv_perfect_c);
+        low_contrast = (TextView)findViewById(R.id.tv_low_c);
 
         // Interfaces relationship
         fab_camera.setOnClickListener(this);
@@ -153,10 +166,94 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (requestCode == TAKE_PHOTO && resultCode == RESULT_OK) {
 
             try {
-                
+                ProccesImage proccesImage = new ProccesImage(MainActivity.this);
+                proccesImage.execute();
             }
             catch(Exception e){
                 Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+
+        }
+
+    }
+
+    class ProccesImage extends AsyncTask<Void, Void, Struct_Result> {
+
+        ProgressDialog pDialog;
+        Context context;
+        ImageAnalysis imageAnalysis;
+
+        final int near_black = 20, affinity_range = 20000;
+
+        public ProccesImage(Context c){
+
+            context = c;
+            imageAnalysis = new ImageAnalysis();
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+
+            if (pDialog != null) {
+                pDialog.dismiss();
+                pDialog = null;
+            }
+
+            Resources r1 = getResources();
+            pDialog = new ProgressDialog(context);
+            pDialog.setMessage(r1.getString(R.string.pd_waiting_getting_color));
+            pDialog.setCancelable(false);
+            pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            pDialog.show();
+
+        }
+
+        @Override
+        protected Struct_Result doInBackground(Void... params) {
+
+            return imageAnalysis.get_AverageColor();
+
+        }
+
+        @Override
+        protected void onPostExecute(Struct_Result sr) {
+
+            pDialog.dismiss();
+
+            int[] colors = sr.get_Colors();
+
+            int color_mio =
+                    Color.rgb(colors[0], colors[1], colors[2]),
+                    color_contrast = Color.rgb(255 - colors[0], 255 - colors[1], 255 - colors[2]),
+                    color_cli = imageAnalysis.get_ToroidalAdjustment(color_contrast - affinity_range),
+                    color_clp = imageAnalysis.get_ToroidalAdjustment(color_contrast + affinity_range);
+
+            Log.d("Dimens: ","#"+color_mio);
+            if (!(Color.blue(color_mio) == Color.red(color_mio) &&
+                Color.red(color_mio) == Color.green(color_mio)) ||
+                    !(Color.blue(color_mio) <= near_black &&
+                        Color.green(color_mio) <= near_black &&
+                        Color.red(color_mio) <= near_black)) {
+                mycolor.setBackgroundColor(color_mio);
+                mycolor.setTextColor(color_mio);
+                perfect_contrast.setBackgroundColor(color_contrast);
+                perfect_contrast.setTextColor(color_mio);
+                low_contrast.setBackgroundColor(color_cli);
+                low_contrast.setTextColor(color_mio);
+                high_contrast.setBackgroundColor(color_clp);
+                high_contrast.setTextColor(color_mio);
+            }
+            else {
+                mycolor.setBackgroundColor(Color.BLACK);
+                mycolor.setTextColor(Color.BLACK);
+                perfect_contrast.setBackgroundColor(Color.WHITE);
+                // contrast1.setText(r.getText(R.string.AC));
+                perfect_contrast.setTextColor(Color.BLACK);
+                low_contrast.setBackgroundColor(Color.GRAY);
+                low_contrast.setTextColor(Color.GRAY);
+                high_contrast.setBackgroundColor(Color.DKGRAY);
+                high_contrast.setTextColor(Color.DKGRAY);
             }
 
         }
