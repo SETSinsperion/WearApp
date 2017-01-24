@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">WearApp</string>
+    <string name="app_comparator_label">Comparator</string>
+    <string name="app_about_label">About WearApp</string>
     <string name="tv_color">Color</string>
     <string name="tv_colorbwg" translatable="false">NNNNNN</string>
+    <string name="tv_color_mix_comparator" translatable="false">NNN</string>
     <string name="tv_mixes">Combines with</string>
     <string name="tv_detected_color">Detected color</string>
     <string name="tv_contrast_high">High contrast</string>
@@ -12,4 +15,7 @@
     <string name="camera_not_permitted">The camera permission wasn\'t granted</string>
     <string name="tv_icon_camera">Click on the camera button</string>
     <string name="pd_waiting_getting_color">Getting color ...</string>
+    <string name="tv_mixing_1">Combination 1</string>
+    <string name="tv_mixing_2">Combination 2</string>
+    <string name="tv_mixing_3">Combination 3</string>
 </resources>

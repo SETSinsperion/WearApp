@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -19,6 +17,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Resources resources;
 
     private final int m_CAMERA = 0, m_WRITEEXTERNALSTORAGE = 1, TAKE_PHOTO = 10;
+    private int mycolor_tc, mycolor_cbc, high_ctc, high_cbc,
+                low_ctc, low_cbc, perfect_ctc, perfect_cbc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +102,68 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+    protected void onSaveInstanceState(Bundle savedState) {
+        super.onSaveInstanceState(savedState);
+        savedState.putInt("mycolor_txtc", mycolor_tc);
+        savedState.putInt("mycolor_back", mycolor_cbc);
+        savedState.putInt("high_txtc", high_ctc);
+        savedState.putInt("high_back", high_cbc);
+        savedState.putInt("perfect_txtc", perfect_ctc);
+        savedState.putInt("perfect_back", perfect_cbc);
+        savedState.putInt("low_txtc", low_ctc);
+        savedState.putInt("low_back", low_cbc);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle recoverState) {
+        super.onRestoreInstanceState(recoverState);
+        mycolor.setTextColor(recoverState.getInt(
+                "mycolor_txtc", resources.getColor(R.color.icons)));
+        mycolor.setBackgroundColor(recoverState.getInt(
+                "mycolor_back", resources.getColor(R.color.colorPrimaryDark)));
+        high_contrast.setTextColor(recoverState.getInt(
+                "high_txtc", resources.getColor(R.color.icons)));
+        high_contrast.setBackgroundColor(recoverState.getInt(
+                "high_back", resources.getColor(R.color.colorPrimaryDark)));
+        low_contrast.setTextColor(recoverState.getInt(
+                "low_txtc", resources.getColor(R.color.icons)));
+        low_contrast.setBackgroundColor(recoverState.getInt(
+                "low_back", resources.getColor(R.color.colorPrimaryDark)));
+        perfect_contrast.setTextColor(recoverState.getInt(
+                "perfect_txtc", resources.getColor(R.color.icons)));
+        perfect_contrast.setBackgroundColor(recoverState.getInt(
+                "perfect_back", resources.getColor(R.color.colorPrimaryDark)));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent i = null;
+
+        switch (item.getItemId()) {
+            case R.id.comparator_menu:
+                i = new Intent(MainActivity.this, ComparatorWActivity.class);
+                break;
+            case R.id.about_menu:
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        startActivity(i);
+        return true;
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
 
         switch (requestCode) {
             case m_WRITEEXTERNALSTORAGE: {
@@ -243,17 +307,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 low_contrast.setTextColor(color_mio);
                 high_contrast.setBackgroundColor(color_clp);
                 high_contrast.setTextColor(color_mio);
+
+                // Backup for screen orientation restart
+                mycolor_tc = color_mio;
+                mycolor_cbc = color_mio;
+                perfect_ctc = color_mio;
+                perfect_cbc = color_contrast;
+                high_ctc = color_mio;
+                high_cbc = color_clp;
+                low_ctc = color_mio;
+                low_cbc = color_cli;
             }
             else {
                 mycolor.setBackgroundColor(Color.BLACK);
                 mycolor.setTextColor(Color.BLACK);
-                perfect_contrast.setBackgroundColor(Color.WHITE);
+                perfect_contrast.setBackgroundColor(Color.BLACK);
                 // contrast1.setText(r.getText(R.string.AC));
                 perfect_contrast.setTextColor(Color.BLACK);
-                low_contrast.setBackgroundColor(Color.GRAY);
-                low_contrast.setTextColor(Color.GRAY);
-                high_contrast.setBackgroundColor(Color.DKGRAY);
-                high_contrast.setTextColor(Color.DKGRAY);
+                low_contrast.setBackgroundColor(Color.BLACK);
+                low_contrast.setTextColor(Color.BLACK);
+                high_contrast.setBackgroundColor(Color.BLACK);
+                high_contrast.setTextColor(Color.BLACK);
+
+                // Backup for screen orientation restart
+                mycolor_tc = Color.BLACK;
+                mycolor_cbc = Color.BLACK;
+                perfect_ctc = Color.BLACK;
+                perfect_cbc = Color.BLACK;
+                high_ctc = Color.BLACK;
+                high_cbc = Color.BLACK;
+                low_ctc = Color.BLACK;
+                low_cbc = Color.BLACK;
             }
 
         }

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/activity_comparator_w"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.insperion.sets.wearapp2.ComparatorWActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="@string/tv_mixing_1"
+                style="@style/textview_primary_style"
+                android:layout_marginBottom="@dimen/margin_b5"
+                android:id="@+id/m1" />
+
+            <TextView
+                android:text="@string/tv_color_mix_comparator"
+                style="@style/textview_primary_comparator_style"
+                android:layout_marginBottom="@dimen/margin_b5"
+                android:id="@+id/ms1" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin_b40">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_c11" />
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_c12"/>
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_c13" />
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_black_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_cb1" />
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_white_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_cw1" />
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_cg1" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:text="@string/tv_mixing_2"
+                style="@style/textview_primary_style"
+                android:layout_marginBottom="@dimen/margin_b5"
+                android:id="@+id/m2" />
+
+            <TextView
+                android:text="@string/tv_color_mix_comparator"
+                style="@style/textview_primary_comparator_style"
+                android:layout_marginBottom="@dimen/margin_b5"
+                android:id="@+id/ms2" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin_b40">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_c21" />
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_c22"/>
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_c23" />
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_black_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_cb2" />
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_white_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_cw2" />
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_cg2" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:text="@string/tv_mixing_3"
+                style="@style/textview_primary_style"
+                android:layout_marginBottom="@dimen/margin_b5"
+                android:id="@+id/m3" />
+
+            <TextView
+                android:text="@string/tv_color_mix_comparator"
+                style="@style/textview_primary_comparator_style"
+                android:layout_marginBottom="@dimen/margin_b5"
+                android:id="@+id/ms3" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin_b40">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_c31" />
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_c32"/>
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_c33" />
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_black_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_cb3" />
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_white_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_cw3" />
+
+                    <TextView
+                        android:text="@string/tv_color_mix_comparator"
+                        style="@style/textview_secondary_comparator_style"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:id="@+id/mycolor_cg3" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -12,4 +12,9 @@
     <string name="tv_icon_camera">Da clic al icono de la cámara</string>
     <string name="tv_detected_color">Color detectado</string>
     <string name="pd_waiting_getting_color">Obteniendo color ...</string>
+    <string name="tv_mixing_1">Combinación 1</string>
+    <string name="tv_mixing_2">Combinación 2</string>
+    <string name="tv_mixing_3">Combinación 3</string>
+    <string name="app_comparator_label">Comparador</string>
+    <string name="app_about_label">Acerca de WearApp</string>
 </resources>
