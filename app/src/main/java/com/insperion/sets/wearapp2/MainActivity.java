@@ -1,3 +1,30 @@
+/*
+
+    MainActivity is part of WearApp.
+
+    WearApp is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    WearApp is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
+/*
+	Developed by: Insperion
+	Team: EDS Insperion
+	Developer(s):
+	    ISC. Sergio Ernesto Tostado Sánchez
+	Contact: contacto@insperion.com.mx
+*/
+
 package com.insperion.sets.wearapp2;
 
 import android.Manifest;
@@ -25,6 +52,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final int m_CAMERA = 0, m_WRITEEXTERNALSTORAGE = 1, TAKE_PHOTO = 10;
     private int mycolor_tc, mycolor_cbc, high_ctc, high_cbc,
                 low_ctc, low_cbc, perfect_ctc, perfect_cbc;
+    private LinkedList<int[]> comparator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         camera = new Intent(
                 android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         resources = getResources();
+        comparator = new LinkedList<>();
 
         // Testing write permission
         if (ContextCompat.checkSelfPermission(this,
@@ -89,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-        // GUI relationship
+        // GUI binding
         fab_camera = (FloatingActionButton)findViewById(R.id.fab_camera);
         mycolor = (TextView)findViewById(R.id.tv_yourcolor);
         high_contrast = (TextView)findViewById(R.id.tv_high_c);
@@ -103,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onSaveInstanceState(Bundle savedState) {
+
         super.onSaveInstanceState(savedState);
         savedState.putInt("mycolor_txtc", mycolor_tc);
         savedState.putInt("mycolor_back", mycolor_cbc);
@@ -113,10 +144,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         savedState.putInt("low_txtc", low_ctc);
         savedState.putInt("low_back", low_cbc);
 
+        if (!comparator.isEmpty()){
+            if (comparator.size() >= 1)
+                savedState.putIntArray("combination_1", comparator.get(0));
+            else if (comparator.size() >= 2)
+                savedState.putIntArray("combination_2", comparator.get(1));
+            else if (comparator.size() == 3)
+                savedState.putIntArray("combination_3", comparator.get(2));
+        }
+
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle recoverState) {
+
         super.onRestoreInstanceState(recoverState);
         mycolor.setTextColor(recoverState.getInt(
                 "mycolor_txtc", resources.getColor(R.color.icons)));
@@ -134,6 +175,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 "perfect_txtc", resources.getColor(R.color.icons)));
         perfect_contrast.setBackgroundColor(recoverState.getInt(
                 "perfect_back", resources.getColor(R.color.colorPrimaryDark)));
+
+        if (!comparator.isEmpty()) {
+            if (comparator.size() >= 1)
+                comparator.add(0, recoverState.getIntArray("combination_1"));
+            else if (comparator.size() >= 2)
+                comparator.add(1, recoverState.getIntArray("combination_2"));
+            else if (comparator.size() == 3)
+                comparator.add(2, recoverState.getIntArray("combination_3"));
+        }
+
     }
 
     @Override
@@ -150,8 +201,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()) {
             case R.id.comparator_menu:
                 i = new Intent(MainActivity.this, ComparatorWActivity.class);
+                if (comparator.size() >= 1)
+                    i.putExtra("comparator_c1", comparator.get(0));
+                if (comparator.size() >= 2)
+                    i.putExtra("comparator_c2", comparator.get(1));
+                if (comparator.size() == 3)
+                    i.putExtra("comparator_c3", comparator.get(2));
                 break;
             case R.id.about_menu:
+                i = new Intent(MainActivity.this, AboutActivity.class);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -247,7 +305,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Context context;
         ImageAnalysis imageAnalysis;
 
-        final int near_black = 20, affinity_range = 20000;
+        final int near_black = 20, affinity_range = 20000, brightness = 500;
 
         public ProccesImage(Context c){
 
@@ -285,15 +343,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             pDialog.dismiss();
 
-            int[] colors = sr.get_Colors();
+            int[] colors = sr.get_Colors(), combination = new int[4];
 
-            int color_mio =
-                    Color.rgb(colors[0], colors[1], colors[2]),
-                    color_contrast = Color.rgb(255 - colors[0], 255 - colors[1], 255 - colors[2]),
-                    color_cli = imageAnalysis.get_ToroidalAdjustment(color_contrast - affinity_range),
-                    color_clp = imageAnalysis.get_ToroidalAdjustment(color_contrast + affinity_range);
+            int color_mio = imageAnalysis.get_ToroidalAdjustment(
+                        Color.rgb(colors[0], colors[1], colors[2]) + brightness),
+                color_contrast = imageAnalysis.get_ToroidalAdjustment(
+                        Color.rgb(255 - colors[0], 255 - colors[1], 255 - colors[2])),
+                color_cli = imageAnalysis.get_ToroidalAdjustment(color_contrast - affinity_range),
+                color_clp = imageAnalysis.get_ToroidalAdjustment(color_contrast + affinity_range);
 
             Log.d("Dimens: ","#"+color_mio);
+
+            if (comparator.size() == 3)
+                comparator.removeLast();
+
             if (!(Color.blue(color_mio) == Color.red(color_mio) &&
                 Color.red(color_mio) == Color.green(color_mio)) ||
                     !(Color.blue(color_mio) <= near_black &&
@@ -317,6 +380,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 high_cbc = color_clp;
                 low_ctc = color_mio;
                 low_cbc = color_cli;
+
+                // Setting new combination
+                combination[0] = color_mio;
+                combination[1] = color_cli;
+                combination[2] = color_contrast;
+                combination[3] = color_clp;
+
             }
             else {
                 mycolor.setBackgroundColor(Color.BLACK);
@@ -338,7 +408,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 high_cbc = Color.BLACK;
                 low_ctc = Color.BLACK;
                 low_cbc = Color.BLACK;
+
+                // Setting new combination
+                combination[0] = Color.BLACK;
+                combination[1] = Color.BLACK;
+                combination[2] = Color.BLACK;
+                combination[3] = Color.BLACK;
+
             }
+
+            comparator.addFirst(combination);
 
         }
 
