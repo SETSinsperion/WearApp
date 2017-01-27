@@ -1,3 +1,29 @@
+<!--
+
+    strings is part of WearApp.
+
+    WearApp is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    WearApp is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+
+    Developed by: Insperion
+    Team: EDS Insperion
+    Developer(s):
+    ISC. Sergio Ernesto Tostado Sánchez
+    Contact: contacto@insperion.com.mx
+
+-->
+
 <resources>
     <string name="app_name">WearApp</string>
     <string name="app_comparator_label">Comparator</string>
@@ -18,4 +44,14 @@
     <string name="tv_mixing_1">Combination 1</string>
     <string name="tv_mixing_2">Combination 2</string>
     <string name="tv_mixing_3">Combination 3</string>
+    <string name="tv_not_combination">There isn\'t combination</string>
+    <string name="tv_about_content">WearApp is an app that help you in the colors selection of your wearing, with only a photo!. No matter what: shirt, pants, footwear, blouse, WearApp suggest you the color whose combines with your clothes.</string>
+    <string name="tv_about_new_version">Version 2.0 brings you:</string>
+    <string name="tv_about_new_add1">- New design.</string>
+    <string name="tv_about_new_add2">- New function added: Comparator, which help you to review the last 3 combinations that WearApp suggest.</string>
+    <string name="tv_about_new_add3">- More efficient photo processing.</string>
+    <string name="tv_about_more_info">More info in the floatting menu.</string>
+    <string name="tv_about_insperion_wearapp">created by</string>
+    <string name="tv_about_menu_website">Website</string>
+    <string name="tv_about_menu_license">License</string>
 </resources>
