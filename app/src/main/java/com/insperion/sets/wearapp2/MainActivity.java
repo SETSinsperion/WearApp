@@ -200,22 +200,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (item.getItemId()) {
             case R.id.comparator_menu:
-                i = new Intent(MainActivity.this, ComparatorWActivity.class);
-                if (comparator.size() >= 1)
-                    i.putExtra("comparator_c1", comparator.get(0));
-                if (comparator.size() >= 2)
-                    i.putExtra("comparator_c2", comparator.get(1));
-                if (comparator.size() == 3)
-                    i.putExtra("comparator_c3", comparator.get(2));
+                if (!comparator.isEmpty()) {
+                    i = new Intent(MainActivity.this, ComparatorWActivity.class);
+
+                    if (comparator.size() >= 1)
+                        i.putExtra("comparator_c1", comparator.get(0));
+                    if (comparator.size() >= 2)
+                        i.putExtra("comparator_c2", comparator.get(1));
+                    if (comparator.size() == 3)
+                        i.putExtra("comparator_c3", comparator.get(2));
+
+                    startActivity(i);
+                }
+                else
+                    Toast.makeText(this, resources.getString(R.string.at_least_one_used), Toast.LENGTH_LONG).show();
                 break;
             case R.id.about_menu:
                 i = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(i);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
-        startActivity(i);
         return true;
 
     }
