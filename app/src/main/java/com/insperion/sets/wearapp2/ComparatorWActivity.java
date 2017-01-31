@@ -30,12 +30,19 @@ package com.insperion.sets.wearapp2;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ComparatorWActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    private TextView m1, m1c1, m1c2, m1c3, m2, m2c1, m2c2, m2c3, m3, m3c1, m3c2, m3c3,
-                     combi1, combi2, combi3;
+public class ComparatorWActivity extends AppCompatActivity implements View.OnTouchListener {
+
+    private TextView m1, m1c1, m1c2, m1c3, m1b1, m1w1, m1g1, m2, m2c1, m2c2, m2c3, m2b1, m2w1, m2g1,
+                     m3, m3c1, m3c2, m3c3, m3b1, m3w1, m3g1, combi1, combi2, combi3, sample1, sample2;
+    private ArrayList<TextView> array_m;
     private Resources resources;
 
     private int[] mix_1, mix_2, mix_3;
@@ -61,18 +68,33 @@ public class ComparatorWActivity extends AppCompatActivity {
         m1c1 = (TextView)findViewById(R.id.mycolor_c11);
         m1c2 = (TextView)findViewById(R.id.mycolor_c12);
         m1c3 = (TextView)findViewById(R.id.mycolor_c13);
+        m1b1 = (TextView)findViewById(R.id.mycolor_cb1);
+        m1w1 = (TextView)findViewById(R.id.mycolor_cw1);
+        m1g1 = (TextView)findViewById(R.id.mycolor_cg1);
         combi2 = (TextView)findViewById(R.id.m2);
         m2 = (TextView)findViewById(R.id.ms2);
         m2c1 = (TextView)findViewById(R.id.mycolor_c21);
         m2c2 = (TextView)findViewById(R.id.mycolor_c22);
         m2c3 = (TextView)findViewById(R.id.mycolor_c23);
+        m2b1= (TextView)findViewById(R.id.mycolor_cb2);
+        m2w1 = (TextView)findViewById(R.id.mycolor_cw2);
+        m2g1 = (TextView)findViewById(R.id.mycolor_cg2);
         combi3 = (TextView)findViewById(R.id.m3);
         m3 = (TextView)findViewById(R.id.ms3);
         m3c1 = (TextView)findViewById(R.id.mycolor_c31);
         m3c2 = (TextView)findViewById(R.id.mycolor_c32);
         m3c3 = (TextView)findViewById(R.id.mycolor_c33);
+        m3b1 = (TextView)findViewById(R.id.mycolor_cb3);
+        m3w1 = (TextView)findViewById(R.id.mycolor_cw3);
+        m3g1 = (TextView)findViewById(R.id.mycolor_cg3);
+        sample1 = (TextView)findViewById(R.id.palette1);
+        sample2 = (TextView)findViewById(R.id.palette2);
 
         set_ColorsComparator();
+        set_ArrayEasyM();
+
+        for(int i=0; i<array_m.size(); i++)
+            array_m.get(i).setOnTouchListener(this);
 
     }
 
@@ -80,12 +102,16 @@ public class ComparatorWActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
 
         super.onSaveInstanceState(outState);
+
         if (mix_1 != null)
             outState.putIntArray("combi1", mix_1);
         if (mix_2 != null)
             outState.putIntArray("combi2", mix_2);
         if (mix_3 != null)
             outState.putIntArray("combi3", mix_3);
+
+        outState.putInt("sample1", sample1.getCurrentTextColor());
+        outState.putInt("sample2", sample2.getCurrentTextColor());
 
     }
 
@@ -138,6 +164,11 @@ public class ComparatorWActivity extends AppCompatActivity {
         }
         else
             combi3.setText(String.format("%s %d", resources.getString(R.string.tv_not_combination), 3));
+
+        sample1.setTextColor(savedInstanceState.getInt("sample1"));
+        sample1.setBackgroundColor(savedInstanceState.getInt("sample1"));
+        sample2.setTextColor(savedInstanceState.getInt("sample2"));
+        sample2.setBackgroundColor(savedInstanceState.getInt("sample2"));
 
     }
 
@@ -192,5 +223,55 @@ public class ComparatorWActivity extends AppCompatActivity {
 
     }
 
+    private void set_ArrayEasyM(){
+
+        array_m = new ArrayList<>();
+
+        array_m.add(m1c1);
+        array_m.add(m1c2);
+        array_m.add(m1c3);
+        array_m.add(m1b1);
+        array_m.add(m1w1);
+        array_m.add(m1g1);
+        array_m.add(m2c1);
+        array_m.add(m2c2);
+        array_m.add(m2c3);
+        array_m.add(m2b1);
+        array_m.add(m2w1);
+        array_m.add(m2g1);
+        array_m.add(m3c1);
+        array_m.add(m3c2);
+        array_m.add(m3c3);
+        array_m.add(m3b1);
+        array_m.add(m3w1);
+        array_m.add(m3g1);
+
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+
+        TextView tv_sample_extractor = (TextView)v;
+        sample2.setTextColor(tv_sample_extractor.getCurrentTextColor());
+        sample2.setBackgroundColor(tv_sample_extractor.getCurrentTextColor());
+
+        LinearLayout hsv = (LinearLayout) tv_sample_extractor.getParent();
+
+        if  (hsv.getId() == R.id.ll_1) {
+            sample1.setTextColor(m1.getCurrentTextColor());
+            sample1.setBackgroundColor(m1.getCurrentTextColor());
+        }
+        else if (hsv.getId() == R.id.ll_2) {
+            sample1.setTextColor(m2.getCurrentTextColor());
+            sample1.setBackgroundColor(m2.getCurrentTextColor());
+        }
+        else {
+            sample1.setTextColor(m3.getCurrentTextColor());
+            sample1.setBackgroundColor(m3.getCurrentTextColor());
+        }
+
+        return false;
+
+    }
 }
 

@@ -49,4 +49,6 @@
     <string name="tv_about_insperion_wearapp">creado por</string>
     <string name="tv_about_menu_license">Licencia</string>
     <string name="tv_about_menu_website">Sitio web</string>
+    <string name="tv_sample">Muestra</string>
+    <string name="at_least_one_used">Debe usar WearApp para generar una combinación para poder comparar</string>
 </resources>

@@ -39,6 +39,7 @@
     <string name="tv_joker_colors">Wildcard colors</string>
     <string name="folder_not_created">The directory WearApp wasn\'t created</string>
     <string name="camera_not_permitted">The camera permission wasn\'t granted</string>
+    <string name="at_least_one_used">You should use WearApp to generate at least one combination to can compare</string>
     <string name="tv_icon_camera">Click on the camera button</string>
     <string name="pd_waiting_getting_color">Getting color ...</string>
     <string name="tv_mixing_1">Combination 1</string>
@@ -49,4 +50,5 @@
     <string name="tv_about_insperion_wearapp">created by</string>
     <string name="tv_about_menu_website">Website</string>
     <string name="tv_about_menu_license">License</string>
+    <string name="tv_sample">Sample</string>
 </resources>
