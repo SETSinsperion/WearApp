@@ -39,6 +39,37 @@
     android:background="@color/icons"
     tools:context="com.insperion.sets.wearapp2.ComparatorWActivity">
 
+    <TextView
+        android:text="@string/tv_sample"
+        style="@style/textview_primary_style"
+        android:layout_marginBottom="@dimen/margin_b5"
+        android:id="@+id/sample" />
+
+    <GridLayout
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:layout_marginBottom="@dimen/margin_b40"
+        android:columnCount="2"
+        android:rowCount="1"
+        android:orientation="horizontal"
+        android:useDefaultMargins="true">
+
+        <TextView
+            android:text="@string/tv_color_mix_comparator"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:layout_columnWeight="1"
+            style="@style/textview_primary_comparator_sample_style"
+            android:id="@+id/palette1" />
+        <TextView
+            android:text="@string/tv_color_mix_comparator"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:layout_columnWeight="1"
+            style="@style/textview_primary_comparator_sample_style"
+            android:id="@+id/palette2" />
+
+    </GridLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -47,24 +78,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:text="@string/tv_sample"
-                style="@style/textview_primary_style"
-                android:layout_marginBottom="@dimen/margin_b5"
-                android:id="@+id/sample" />
-
-            <TextView
-                android:text="@string/tv_color_mix_comparator"
-                style="@style/textview_primary_comparator_style"
-                android:layout_marginBottom="@dimen/margin_b5"
-                android:id="@+id/palette1" />
-            <TextView
-                android:text="@string/tv_color_mix_comparator"
-                style="@style/textview_primary_comparator_style"
-                android:layout_marginBottom="@dimen/margin_b40"
-                android:id="@+id/palette2" />
+            android:orientation="vertical"
+            android:baselineAligned="false">
 
             <TextView
                 android:text="@string/tv_mixing_1"
