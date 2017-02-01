@@ -107,33 +107,40 @@
                     android:layout_marginBottom="@dimen/margin_b15"
                     android:id="@+id/textView8" />
 
-                <TableLayout
+                <GridLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/margin_b80"
-                    android:stretchColumns="1">
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    android:layout_height="65dp"
+                    android:layout_marginBottom="@dimen/margin_b40"
+                    android:columnCount="3"
+                    android:rowCount="1"
+                    android:orientation="horizontal"
+                    android:useDefaultMargins="true">
 
                         <TextView
                             android:text="@string/tv_colorbwg"
                             style="@style/textview_blackcolor_style"
+                            android:layout_column="0"
+                            android:layout_row="0"
+                            android:layout_columnWeight="1"
                             android:id="@+id/textView97" />
 
                         <TextView
                             android:text="@string/tv_colorbwg"
                             style="@style/textview_whitekcolor_style"
+                            android:layout_column="1"
+                            android:layout_row="0"
+                            android:layout_columnWeight="1"
                             android:id="@+id/textView98" />
 
                         <TextView
                             android:text="@string/tv_colorbwg"
+                            android:layout_column="2"
+                            android:layout_row="0"
+                            android:layout_columnWeight="1"
                             style="@style/textview_graycolor_style"
                             android:id="@+id/textView99" />
 
-                    </TableRow>
-                </TableLayout>
+                </GridLayout>
 
             </LinearLayout>
         </ScrollView>

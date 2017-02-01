@@ -36,7 +36,7 @@
     <string name="tv_contrast_perfect">Contraste perfecto</string>
     <string name="tv_joker_colors">Colores comodines</string>
     <string name="tv_mixes">Combina con</string>
-    <string name="tv_icon_camera">Da clic al icono de la cámara</string>
+    <string name="tv_icon_camera">Toca el botón de la cámara</string>
     <string name="tv_detected_color">Color detectado</string>
     <string name="pd_waiting_getting_color">Obteniendo color ...</string>
     <string name="tv_mixing_1">Combinación 1</string>
@@ -46,7 +46,6 @@
     <string name="app_about_label">Acerca de WearApp</string>
     <string name="tv_not_combination">No hay combinación</string>
     <string name="tv_about_content">WearApp v2.0 es un app que te ayuda en la selección de los color de tu vestir, ¡con sólo una foto! No importa que sea: camisa, tenis, pants, blusa, WearApp te sugerirá el color que combina con tu ropa.</string>
-    <string name="tv_about_insperion_wearapp">creado por</string>
     <string name="tv_about_menu_license">Licencia</string>
     <string name="tv_about_menu_website">Sitio web</string>
     <string name="tv_sample">Muestra</string>
