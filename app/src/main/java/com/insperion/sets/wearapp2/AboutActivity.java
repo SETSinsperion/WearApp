@@ -34,11 +34,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.webkit.WebView;
+import android.widget.ScrollView;
 
 public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private FloatingActionButton license, website;
+    private FloatingActionButton license, website, fab_arrow_about;
+    private ScrollView sv_about;
     private Resources resources;
 
     @Override
@@ -52,10 +55,26 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         // GUI Binding
         license = (FloatingActionButton)findViewById(R.id.fab_about_license);
         website = (FloatingActionButton)findViewById(R.id.fab_about_website);
+        fab_arrow_about = (FloatingActionButton)findViewById(R.id.fab_arrow_about);
+        sv_about = (ScrollView)findViewById(R.id.sv_about);
 
         // Interface Binding
         license.setOnClickListener(this);
         website.setOnClickListener(this);
+        sv_about.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                if (sv_about != null) {
+                    if (sv_about.getChildAt(0).getBottom() <=
+                            (sv_about.getHeight() + sv_about.getScrollY())) {
+                        fab_arrow_about.hide();
+                    }
+                    else {
+                        fab_arrow_about.show();
+                    }
+                }
+            }
+        });
 
     }
 

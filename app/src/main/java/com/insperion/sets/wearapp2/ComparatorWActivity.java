@@ -28,18 +28,23 @@
 package com.insperion.sets.wearapp2;
 
 import android.content.res.Resources;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class ComparatorWActivity extends AppCompatActivity implements View.OnTouchListener {
 
+    private ScrollView sv_comparator;
+    private FloatingActionButton fab_arrow;
     private TextView m1, m1c1, m1c2, m1c3, m1b1, m1w1, m1g1, m2, m2c1, m2c2, m2c3, m2b1, m2w1, m2g1,
                      m3, m3c1, m3c2, m3c3, m3b1, m3w1, m3g1, combi1, combi2, combi3, sample1, sample2;
     private ArrayList<TextView> array_m;
@@ -63,6 +68,8 @@ public class ComparatorWActivity extends AppCompatActivity implements View.OnTou
         mix_3 = bundle.getIntArray("comparator_c3");
 
         // GUI Binding
+        fab_arrow = (FloatingActionButton)findViewById(R.id.fab_arrow_comparator);
+        sv_comparator = (ScrollView)findViewById(R.id.sv_comparator);
         combi1 = (TextView)findViewById(R.id.m1);
         m1 = (TextView)findViewById(R.id.ms1);
         m1c1 = (TextView)findViewById(R.id.mycolor_c11);
@@ -95,6 +102,22 @@ public class ComparatorWActivity extends AppCompatActivity implements View.OnTou
 
         for(int i=0; i<array_m.size(); i++)
             array_m.get(i).setOnTouchListener(this);
+
+        // Interface Binding
+        sv_comparator.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                if (sv_comparator != null) {
+                    if (sv_comparator.getChildAt(0).getBottom() <=
+                            (sv_comparator.getHeight() + sv_comparator.getScrollY())) {
+                        fab_arrow.hide();
+                    }
+                    else {
+                        fab_arrow.show();
+                    }
+                }
+            }
+        });
 
     }
 

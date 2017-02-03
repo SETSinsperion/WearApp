@@ -31,7 +31,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/icons"
@@ -89,12 +88,30 @@
         android:paddingRight="@dimen/activity_right_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-        <TextView
-            android:text="@string/tv_mixes"
-            style="@style/textview_primary_style"
-            android:id="@+id/textView4" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/tv_mixes"
+                style="@style/textview_primary_left_style"
+                android:id="@+id/textView4" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:elevation="@dimen/fab_elevation"
+                android:layout_marginLeft="@dimen/margin_b80"
+                android:clickable="true"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/ic_arrow_downward_black_24dp"
+                android:id="@+id/fab_arrow_main" />
+
+        </RelativeLayout>
 
         <ScrollView
+            android:id="@+id/sv_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

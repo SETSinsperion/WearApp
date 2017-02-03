@@ -48,6 +48,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +59,8 @@ import java.util.LinkedList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mycolor, high_contrast, perfect_contrast, low_contrast;
-    private FloatingActionButton fab_camera;
+    private FloatingActionButton fab_camera, fab_arrow_main;
+    private ScrollView sv_main;
 
     private File d_WearApp;
     private Intent camera;
@@ -121,13 +124,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // GUI binding
         fab_camera = (FloatingActionButton)findViewById(R.id.fab_camera);
+        fab_arrow_main = (FloatingActionButton)findViewById(R.id.fab_arrow_main);
         mycolor = (TextView)findViewById(R.id.tv_yourcolor);
         high_contrast = (TextView)findViewById(R.id.tv_high_c);
         perfect_contrast = (TextView)findViewById(R.id.tv_perfect_c);
         low_contrast = (TextView)findViewById(R.id.tv_low_c);
+        sv_main = (ScrollView)findViewById(R.id.sv_main);
 
         // Interfaces relationship
         fab_camera.setOnClickListener(this);
+        sv_main.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                if (sv_main != null) {
+                    if (sv_main.getChildAt(0).getBottom() <=
+                            (sv_main.getHeight() + sv_main.getScrollY())) {
+                        fab_arrow_main.hide();
+                    }
+                    else {
+                        fab_arrow_main.show();
+                    }
+                }
+            }
+        });
 
     }
 
