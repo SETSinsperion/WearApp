@@ -50,7 +50,7 @@ public class ImageAnalysis {
         final String path_to_ap =
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) +
                         "/WearApp/AFINITY_PHOTO.png";
-        final int qt_pixel = 90000, area_half = 150;
+        final int qt_pixel = 160000, area_half = 200;
 
         // RGB are 3
         int[] colors = new int[3];

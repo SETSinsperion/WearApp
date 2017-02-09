@@ -27,7 +27,7 @@
 -->
 
 <resources>
-    <string name="app_name">WearApp</string>
+    <string name="app_name">WearApp 2.0</string>
     <string name="folder_not_created">El directorio WearApp no fue creado</string>
     <string name="camera_not_permitted">El permiso de la camera no fue autorizado</string>
     <string name="tv_color">El color</string>

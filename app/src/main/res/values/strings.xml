@@ -25,7 +25,7 @@
 -->
 
 <resources>
-    <string name="app_name">WearApp</string>
+    <string name="app_name">WearApp 2.0</string>
     <string name="app_comparator_label">Comparator</string>
     <string name="app_about_label">About WearApp</string>
     <string name="tv_color">Color</string>
