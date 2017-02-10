@@ -38,7 +38,7 @@
     android:paddingRight="@dimen/activity_right_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/icons"
-    tools:context="com.insperion.sets.wearapp2.AboutActivity">
+    tools:context="com.insperion.sets.wearapp20.AboutActivity">
 
 
     <LinearLayout
