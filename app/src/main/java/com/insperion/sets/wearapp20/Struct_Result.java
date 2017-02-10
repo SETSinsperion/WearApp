@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+/*
 
-<!--
-
-    activity_splash is part of WearApp.
+    Struct_Result is part of WearApp.
 
     WearApp is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,22 +15,40 @@
     You should have received a copy of the GNU General Public License
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
+*/
 
-    Developed by: Insperion
-    Team: EDS Insperion
-    Developer(s):
-    ISC. Sergio Ernesto Tostado Sánchez
-    Contact: contacto@insperion.com.mx
+/*
+	Developed by: Insperion
+	Team: EDS Insperion
+	Developer(s):
+	    ISC. Sergio Ernesto Tostado Sánchez
+	Contact: contacto@insperion.com.mx
+*/
 
--->
+package com.insperion.sets.wearapp20;
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_splash"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/back_wearapp_2"
-    tools:context="com.insperion.sets.wearapp20.SplashActivity">
+import java.io.File;
 
-</RelativeLayout>
+/**
+ * Created by sets on 22/01/17.
+ */
 
+public class Struct_Result {
+
+    private int[] colors;
+    private File bitmap;
+
+    public Struct_Result(int[] colors, File bitmap) {
+        this.colors = colors;
+        this.bitmap = bitmap;
+    }
+
+    public int[] get_Colors(){
+        return this.colors;
+    }
+
+    public File get_Bitmap(){
+        return this.bitmap;
+    }
+
+}

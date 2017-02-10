@@ -4,11 +4,11 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.insperion.sets.wearapp2"
-        minSdkVersion 21
+        applicationId "com.insperion.sets.wearapp20"
+        minSdkVersion 15
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -28,6 +28,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:support-v4:25.1.0'
     compile 'com.android.support:design:25.1.0'
-    compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
 }
