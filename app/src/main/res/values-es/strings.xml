@@ -27,7 +27,7 @@
 -->
 
 <resources>
-    <string name="app_name">WearApp 2.0</string>
+    <string name="app_name">WearApp</string>
     <string name="folder_not_created">El directorio WearApp no fue creado</string>
     <string name="camera_not_permitted">El permiso de la camera no fue autorizado</string>
     <string name="tv_color">El color</string>
@@ -50,4 +50,5 @@
     <string name="tv_about_menu_website">Sitio web</string>
     <string name="tv_sample">Muestra</string>
     <string name="at_least_one_used">Debe usar WearApp para generar una combinación para poder comparar</string>
+    <string name="tv_sample_tooltip">¡Desliza!</string>
 </resources>

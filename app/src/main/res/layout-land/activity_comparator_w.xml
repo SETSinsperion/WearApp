@@ -1,32 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!--
-
-    activity_comparator_w is part of WearApp.
-
-    WearApp is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    WearApp is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
-
-
-    Developed by: Insperion
-    Team: EDS Insperion
-    Developer(s):
-    ISC. Sergio Ernesto Tostado Sánchez
-    Contact: contacto@insperion.com.mx
-
--->
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_comparator_w"
@@ -40,43 +14,62 @@
     tools:context="com.insperion.sets.wearapp20.ComparatorWActivity">
 
     <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="240dp"
+        android:layout_height="match_parent">
 
         <TextView
             android:text="@string/tv_sample"
             style="@style/textview_primary_style"
-            android:layout_marginBottom="@dimen/margin_b5"
+            android:layout_marginBottom="@dimen/margin_b15"
             android:id="@+id/sample" />
 
-        <GridLayout
-            android:layout_width="fill_parent"
-            android:layout_height="65dp"
-            android:layout_marginBottom="@dimen/margin_b40"
-            android:columnCount="2"
-            android:rowCount="1"
-            android:orientation="horizontal"
-            android:useDefaultMargins="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
                 android:text="@string/tv_color_mix_comparator"
-                android:layout_column="0"
-                android:layout_row="0"
-                android:layout_columnWeight="1"
-                android:layout_columnSpan="1"
-                style="@style/textview_primary_comparator_sample_style"
+                style="@style/textview_primary_comparator_sample_land_style"
                 android:id="@+id/palette1" />
+
             <TextView
                 android:text="@string/tv_color_mix_comparator"
-                android:layout_column="1"
-                android:layout_row="0"
-                android:layout_columnWeight="1"
-                android:layout_columnSpan="1"
-                style="@style/textview_primary_comparator_sample_style"
+                style="@style/textview_primary_comparator_sample_land_style"
                 android:id="@+id/palette2" />
 
-        </GridLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_left_margin">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:elevation="@dimen/fab_elevation"
+                android:layout_marginLeft="@dimen/margin_b80"
+                android:clickable="true"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/ic_arrow_downward_black_24dp"
+                android:id="@+id/fab_arrow_main" />
+
+        </RelativeLayout>
 
         <ScrollView
             android:id="@+id/sv_comparator"
@@ -102,7 +95,8 @@
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/margin_b40">
 
                     <LinearLayout
                         android:id="@+id/ll_1"
@@ -149,40 +143,9 @@
                     </LinearLayout>
                 </HorizontalScrollView>
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <android.support.design.widget.FloatingActionButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_15"
-                    android:layout_marginRight="@dimen/margin_b5"
-                    android:layout_gravity="left"
-                    android:clickable="true"
-                    app:fabSize="mini"
-                    app:srcCompat="@drawable/ic_arrow_forward_black_24dp"
-                    app:backgroundTint="@color/colorPrimaryDark"
-                    android:id="@+id/fab_arrow_tooltip_comparator" />
-
-                <TextView
-                    android:text="@string/tv_sample_tooltip"
-                    style="@style/textview_tooltip_style"
-                    android:layout_gravity="left|center_vertical"
-                    android:id="@+id/tooltip1_comparator" />
-
-            </LinearLayout>
-            </HorizontalScrollView>
-
                 <TextView
                     android:text="@string/tv_mixing_2"
                     style="@style/textview_primary_style"
-                    android:layout_marginTop="@dimen/margin_b40"
                     android:layout_marginBottom="@dimen/margin_b5"
                     android:id="@+id/m2" />
 
@@ -309,18 +272,6 @@
 
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/scrollable_arrow_margin"
-        android:elevation="@dimen/fab_elevation"
-        android:clickable="true"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/ic_arrow_downward_black_24dp"
-        app:backgroundTint="@color/colorAccent"
-        android:id="@+id/fab_arrow_comparator" />
+    </LinearLayout>
 
 </RelativeLayout>

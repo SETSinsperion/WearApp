@@ -84,7 +84,7 @@
                         <android.support.design.widget.FloatingActionButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/fab_margin"
+                            android:layout_margin="@dimen/fab_margin_land"
                             android:elevation="@dimen/fab_elevation"
                             android:clickable="true"
                             app:fabSize="normal"
@@ -107,7 +107,7 @@
                         <android.support.design.widget.FloatingActionButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/fab_margin"
+                            android:layout_margin="@dimen/fab_margin_land"
                             android:elevation="@dimen/fab_elevation"
                             android:clickable="true"
                             app:fabSize="normal"
@@ -151,7 +151,7 @@
         android:clickable="true"
         app:fabSize="mini"
         app:srcCompat="@drawable/ic_arrow_downward_black_24dp"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/colorAccent"
         android:id="@+id/fab_arrow_about" />
 
 </RelativeLayout>

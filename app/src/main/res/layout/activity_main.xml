@@ -40,6 +40,12 @@
     android:background="@color/icons"
     tools:context="com.insperion.sets.wearapp20.MainActivity">
 
+
+    <ScrollView
+        android:id="@+id/sv_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -70,11 +76,6 @@
             android:text="@string/tv_mixes"
             style="@style/textview_primary_style"
             android:id="@+id/textView4" />
-
-        <ScrollView
-            android:id="@+id/sv_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -144,9 +145,11 @@
                 </GridLayout>
 
             </LinearLayout>
-        </ScrollView>
+
 
     </LinearLayout>
+
+    </ScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
