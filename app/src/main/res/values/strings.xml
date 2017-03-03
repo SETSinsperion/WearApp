@@ -25,7 +25,7 @@
 -->
 
 <resources>
-    <string name="app_name">WearApp 2.0</string>
+    <string name="app_name">WearApp</string>
     <string name="app_comparator_label">Comparator</string>
     <string name="app_about_label">About WearApp</string>
     <string name="tv_color">Color</string>
@@ -50,4 +50,5 @@
     <string name="tv_about_menu_website">Website</string>
     <string name="tv_about_menu_license">License</string>
     <string name="tv_sample">Sample</string>
+    <string name="tv_sample_tooltip">Slide!</string>
 </resources>

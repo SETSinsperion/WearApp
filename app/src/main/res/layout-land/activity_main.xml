@@ -57,7 +57,7 @@
             android:layout_gravity="center"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_margin="@dimen/fab_margin_land"
+            android:layout_marginBottom="@dimen/fab_margin_land"
             android:elevation="@dimen/fab_elevation"
             android:clickable="true"
             app:fabSize="normal"
@@ -66,13 +66,6 @@
 
         <TextView
             android:text="@string/tv_color"
-            style="@style/textview_primary_style"
-            android:layout_marginTop="@dimen/margin_t5"
-            android:layout_marginBottom="@dimen/margin_b5"
-            android:id="@+id/textView2" />
-
-        <TextView
-            android:text="@string/tv_detected_color"
             style="@style/textview_colors_style"
             android:layout_marginBottom="@dimen/margin_b40"
             android:id="@+id/tv_yourcolor" />

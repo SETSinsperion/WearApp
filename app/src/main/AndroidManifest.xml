@@ -27,9 +27,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.insperion.sets.wearapp20"
-    android:versionCode="5"
-    android:versionName="2.0">
+    package="com.insperion.sets.wearapp20">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -51,13 +49,16 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait" />
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ComparatorWActivity"
-            android:label="@string/app_comparator_label" />
+            android:label="@string/app_comparator_label"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".AboutActivity"
-            android:label="@string/app_about_label"/>
+            android:label="@string/app_about_label"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

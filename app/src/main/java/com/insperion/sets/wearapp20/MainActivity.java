@@ -75,6 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+            finish();
+            return;
+        }
+
         setContentView(R.layout.activity_main);
 
         // Primary variables - objects
@@ -85,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         resources = getResources();
         comparator = new LinkedList<>();
+
 
         // Testing write permission
         if (ContextCompat.checkSelfPermission(this,
@@ -178,22 +185,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onRestoreInstanceState(Bundle recoverState) {
 
         super.onRestoreInstanceState(recoverState);
-        mycolor.setTextColor(recoverState.getInt(
-                "mycolor_txtc", resources.getColor(R.color.icons)));
-        mycolor.setBackgroundColor(recoverState.getInt(
-                "mycolor_back", resources.getColor(R.color.colorPrimaryDark)));
-        high_contrast.setTextColor(recoverState.getInt(
-                "high_txtc", resources.getColor(R.color.icons)));
-        high_contrast.setBackgroundColor(recoverState.getInt(
-                "high_back", resources.getColor(R.color.colorPrimaryDark)));
-        low_contrast.setTextColor(recoverState.getInt(
-                "low_txtc", resources.getColor(R.color.icons)));
-        low_contrast.setBackgroundColor(recoverState.getInt(
-                "low_back", resources.getColor(R.color.colorPrimaryDark)));
-        perfect_contrast.setTextColor(recoverState.getInt(
-                "perfect_txtc", resources.getColor(R.color.icons)));
-        perfect_contrast.setBackgroundColor(recoverState.getInt(
-                "perfect_back", resources.getColor(R.color.colorPrimaryDark)));
+        mycolor.setTextColor(recoverState.getInt("mycolor_txtc"));
+        mycolor.setBackgroundColor(recoverState.getInt("mycolor_back"));
+        high_contrast.setTextColor(recoverState.getInt("high_txtc"));
+        high_contrast.setBackgroundColor(recoverState.getInt("high_back"));
+        low_contrast.setTextColor(recoverState.getInt("low_txtc"));
+        low_contrast.setBackgroundColor(recoverState.getInt("low_back"));
+        perfect_contrast.setTextColor(recoverState.getInt("perfect_txtc"));
+        perfect_contrast.setBackgroundColor(recoverState.getInt("perfect_back"));
 
         if (!comparator.isEmpty()) {
             if (comparator.size() >= 1)
@@ -203,7 +202,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             else if (comparator.size() == 3)
                 comparator.add(2, recoverState.getIntArray("combination_3"));
         }
-
     }
 
     @Override
@@ -331,7 +329,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Context context;
         ImageAnalysis imageAnalysis;
 
-        final int near_black = 20, affinity_range = 20000, brightness = 500;
+        final int near_black = 20, affinity_range = 20000, brightness = 0;
 
         public ProccesImage(Context c){
 

@@ -27,6 +27,7 @@
 
 package com.insperion.sets.wearapp20;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -43,22 +44,31 @@ import java.util.ArrayList;
 public class ComparatorWActivity extends AppCompatActivity implements View.OnTouchListener {
 
     private ScrollView sv_comparator;
-    private FloatingActionButton fab_arrow;
+    private FloatingActionButton fab_arrow, fab_arrow_tooltip;
     private TextView m1, m1c1, m1c2, m1c3, m1b1, m1w1, m1g1, m2, m2c1, m2c2, m2c3, m2b1, m2w1, m2g1,
-            m3, m3c1, m3c2, m3c3, m3b1, m3w1, m3g1, combi1, combi2, combi3, sample1, sample2;
+            m3, m3c1, m3c2, m3c3, m3b1, m3w1, m3g1, combi1, combi2, combi3, sample1, sample2,
+            tooltip1;
     private ArrayList<TextView> array_m;
     private Resources resources;
 
     private int[] mix_1, mix_2, mix_3;
+    private boolean is_needed_tooltip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+            finish();
+            return;
+        }
+
         setContentView(R.layout.activity_comparator_w);
 
         // Primary variables
         resources = getResources();
+        is_needed_tooltip = true;
 
         // Getting comparator
         Bundle bundle = getIntent().getExtras();
@@ -67,7 +77,9 @@ public class ComparatorWActivity extends AppCompatActivity implements View.OnTou
         mix_3 = bundle.getIntArray("comparator_c3");
 
         // GUI Binding
+        tooltip1 = (TextView)findViewById(R.id.tooltip1_comparator);
         fab_arrow = (FloatingActionButton)findViewById(R.id.fab_arrow_comparator);
+        fab_arrow_tooltip = (FloatingActionButton)findViewById(R.id.fab_arrow_tooltip_comparator);
         sv_comparator = (ScrollView)findViewById(R.id.sv_comparator);
         combi1 = (TextView)findViewById(R.id.m1);
         m1 = (TextView)findViewById(R.id.ms1);
@@ -270,6 +282,12 @@ public class ComparatorWActivity extends AppCompatActivity implements View.OnTou
 
     }
 
+    private void set_TooltipOut() {
+        fab_arrow_tooltip.hide();
+        tooltip1.setVisibility(View.GONE);
+        is_needed_tooltip = false;
+    }
+
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
@@ -282,14 +300,17 @@ public class ComparatorWActivity extends AppCompatActivity implements View.OnTou
         if  (hsv.getId() == R.id.ll_1) {
             sample1.setTextColor(m1.getCurrentTextColor());
             sample1.setBackgroundColor(m1.getCurrentTextColor());
+            set_TooltipOut();
         }
         else if (hsv.getId() == R.id.ll_2) {
             sample1.setTextColor(m2.getCurrentTextColor());
             sample1.setBackgroundColor(m2.getCurrentTextColor());
+            set_TooltipOut();
         }
         else {
             sample1.setTextColor(m3.getCurrentTextColor());
             sample1.setBackgroundColor(m3.getCurrentTextColor());
+            set_TooltipOut();
         }
 
         return false;
